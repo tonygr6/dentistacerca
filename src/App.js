@@ -58,7 +58,6 @@ export default function App() {
   const [seleccionada, setSeleccionada] = useState(null);
   const [cargando,     setCargando]     = useState(true);
   const [errorMapa,    setErrorMapa]    = useState('');
-  const [menuAbierto,  setMenuAbierto]  = useState(false);
 
   // ── Cargar clínicas visibles en el directorio ────────────────────────────
   useEffect(() => {
