@@ -133,7 +133,8 @@ html{scroll-behavior:smooth;}
 .dcard:hover{background:rgba(255,255,255,.11);}
 .dc-illus{background:rgba(255,255,255,.05);display:flex;justify-content:center;align-items:flex-end;min-height:200px;overflow:hidden;}
 .dc-illus img{height:200px;width:100%;object-fit:contain;}
-.dc-illus img.foto{object-fit:cover;object-position:center 22%;height:260px;}
+.dc-illus img.foto{object-fit:cover;object-position:center 18%;height:400px;}
+@media(max-width:600px){.dc-illus img.foto{height:340px;}}
 .dc-body{padding:22px;}
 .dc-tag{display:inline-block;font-size:10px;font-weight:800;padding:3px 10px;border-radius:6px;margin-bottom:10px;}
 .dc-tag-pro{background:rgba(0,180,160,.2);color:#4dd6c8;}
