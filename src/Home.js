@@ -287,7 +287,7 @@ export default function Home({ irADirectorio }) {
           <div className="dentista-grid">
 
             <div className="dcard">
-              <div className="dc-illus"><img src="/img/dentista-oralix.svg" alt="Dentista usando ORALIX" /></div>
+              <div className="dc-illus"><img className="foto" src="/img/dentista-oralix.webp" alt="Dentista en su clínica con ORALIX" /></div>
               <div className="dc-body">
                 <div className="oralix-chip"><img src="/img/logo-dentistacerca.png" alt="" /><span>ORALIX</span></div>
                 <div className="dc-tag dc-tag-pro">Creado por un dentista, para dentistas</div>
@@ -303,7 +303,7 @@ export default function Home({ irADirectorio }) {
             </div>
 
             <div className="dcard">
-              <div className="dc-illus"><img src="/img/dentista-lucy.svg" alt="Dentista usando Lucy" /></div>
+              <div className="dc-illus"><img className="foto" src="/img/dentista-lucy.jpg" alt="Dentista en su clínica con Lucy" /></div>
               <div className="dc-body">
                 <div className="oralix-chip"><img src="/img/logo-dentistacerca.png" alt="" /><span>ORALIX Lucy</span></div>
                 <div className="dc-tag dc-tag-lucy">✦ Nuevo · IA dental</div>
