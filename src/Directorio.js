@@ -1,4 +1,6 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import supabase from './lib/supabase';
 
 const ESPECIALIDADES = [
@@ -34,33 +36,10 @@ function urlGoogleMaps(c) {
   return `https://www.google.com/maps/search/?api=1&query=${q}`;
 }
 
-// Carga el SDK de Google Maps una sola vez
-function cargarGoogleMaps() {
-  return new Promise((resolve, reject) => {
-    if (window.google?.maps) { resolve(); return; }
-    const key = process.env.REACT_APP_GOOGLE_MAPS_KEY;
-    if (!key) { reject(new Error('Variable REACT_APP_GOOGLE_MAPS_KEY no configurada')); return; }
-    const existente = document.querySelector('script[data-gmaps]');
-    if (existente) {
-      existente.addEventListener('load', resolve);
-      existente.addEventListener('error', () => reject(new Error('Error al cargar Google Maps')));
-      return;
-    }
-    const script = document.createElement('script');
-    script.setAttribute('data-gmaps', '1');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}`;
-    script.async = true;
-    script.onload  = resolve;
-    script.onerror = () => reject(new Error('Error al cargar Google Maps'));
-    document.head.appendChild(script);
-  });
-}
-
 export default function Directorio({ filtroInicial = {}, irAInicio }) {
   const mapRef     = useRef(null);
   const mapInst    = useRef(null);
-  const markersRef = useRef([]);
-  const infoWinRef = useRef(null);
+  const markersRef = useRef(new Map());   // id de clínica → marcador
 
   const [clinicas,     setClinicas]     = useState([]);
   const [filtradas,    setFiltradas]    = useState([]);
@@ -98,73 +77,56 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
     setFiltradas(res);
   }, [busqueda, especFiltro, clinicas]);
 
-  // ── Inicializar mapa ──────────────────────────────────────────────────────
-  const initMap = useCallback((lista) => {
-    if (!mapRef.current || !window.google?.maps) return;
-    const map = new window.google.maps.Map(mapRef.current, {
-      zoom: 11,
-      center: GUADALAJARA,
-      mapTypeControl: false,
-      streetViewControl: false,
-      fullscreenControl: true,
-      styles: [
-        { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] },
-      ],
-    });
-    mapInst.current = map;
-    infoWinRef.current = new window.google.maps.InfoWindow();
+  // ── Mapa (OpenStreetMap con Leaflet: gratis, sin llave) ──────────────────
+  // Se crea una sola vez cuando llegan las clínicas; cada clínica es un círculo
+  // con los colores de ORALIX. Al hacer clic se abre su tarjeta de detalle.
+  useEffect(() => {
+    if (clinicas.length === 0 || !mapRef.current || mapInst.current) return;
+    try {
+      const map = L.map(mapRef.current, { zoomControl: true }).setView([GUADALAJARA.lat, GUADALAJARA.lng], 11);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19,
+      }).addTo(map);
+      mapInst.current = map;
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        pos => map.setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-        () => {}
-      );
+      clinicas.forEach(c => {
+        const marcador = L.circleMarker([parseFloat(c.latitud), parseFloat(c.longitud)], {
+          radius: 11, color: '#1A6FBF', weight: 3, fillColor: '#00B4A0', fillOpacity: 1,
+        }).bindTooltip(c.nombre, { direction: 'top', offset: [0, -10] });
+        marcador.on('click', () => {
+          setSeleccionada(c);
+          map.panTo(marcador.getLatLng());
+        });
+        marcador.addTo(map);
+        markersRef.current.set(c.id, marcador);
+      });
+
+      // Encuadrar todas las clínicas (o la elegida desde el inicio)
+      const elegida = clinicas.find(c => c.id === filtroInicial.clinica);
+      if (elegida) {
+        map.setView([parseFloat(elegida.latitud), parseFloat(elegida.longitud)], 15);
+      } else if (clinicas.length > 1) {
+        map.fitBounds(L.latLngBounds(clinicas.map(c => [parseFloat(c.latitud), parseFloat(c.longitud)])), { padding: [50, 50], maxZoom: 13 });
+      } else {
+        map.setView([parseFloat(clinicas[0].latitud), parseFloat(clinicas[0].longitud)], 14);
+      }
+    } catch (err) {
+      setErrorMapa('No se pudo cargar el mapa: ' + err.message);
     }
+  }, [clinicas]); // eslint-disable-line react-hooks/exhaustive-deps
 
-    lista.forEach(c => agregarMarcador(c, map));
-  }, []); // eslint-disable-line
+  useEffect(() => () => { mapInst.current?.remove(); mapInst.current = null; }, []);
 
-  function agregarMarcador(clinica, map) {
-    const pos = { lat: parseFloat(clinica.latitud), lng: parseFloat(clinica.longitud) };
-    const marker = new window.google.maps.Marker({
-      position: pos,
-      map,
-      title: clinica.nombre,
-      icon: {
-        path: window.google.maps.SymbolPath.CIRCLE,
-        scale: 10,
-        fillColor: '#00B4A0',
-        fillOpacity: 1,
-        strokeColor: '#1A6FBF',
-        strokeWeight: 2,
-      },
-    });
-    marker.addListener('click', () => {
-      setSeleccionada(clinica);
-      infoWinRef.current?.setContent(`
-        <div style="font-family:Inter,Arial,sans-serif;padding:4px;max-width:220px">
-          <strong style="color:#1A6FBF;font-size:14px">${clinica.nombre}</strong><br/>
-          <span style="color:#888;font-size:12px">${clinica.direccion || ''}</span>
-        </div>
-      `);
-      infoWinRef.current?.open(map, marker);
-      map.panTo(pos);
-    });
-    markersRef.current.push(marker);
-  }
-
+  // Mostrar solo los marcadores de las clínicas que pasan el filtro
   useEffect(() => {
-    if (clinicas.length === 0) return;
-    cargarGoogleMaps()
-      .then(() => initMap(clinicas))
-      .catch(err => setErrorMapa(err.message));
-  }, [clinicas, initMap]);
-
-  // Actualizar visibilidad de marcadores según filtro
-  useEffect(() => {
+    const map = mapInst.current;
+    if (!map) return;
     const ids = new Set(filtradas.map(c => c.id));
-    markersRef.current.forEach((m, i) => m.setVisible(ids.has(clinicas[i]?.id)));
-  }, [filtradas, clinicas]);
+    markersRef.current.forEach((marcador, id) => {
+      if (ids.has(id)) marcador.addTo(map); else marcador.remove();
+    });
+  }, [filtradas]);
 
   // ── Render ────────────────────────────────────────────────────────────────
   return (
@@ -222,7 +184,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
       </div>
 
       {/* ── Contenido: lista + mapa ── */}
-      <div style={{ display: 'flex', height: 'calc(100vh - 114px)' }}>
+      <div style={{ display: 'flex', height: 'calc(100vh - 178px)' }}>
 
         {/* Lista lateral */}
         <div style={{ width: '380px', flexShrink: 0, overflowY: 'auto', borderRight: `1px solid ${C.borde}`, background: C.blanco }}>
@@ -251,8 +213,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
                 onClick={() => {
                   setSeleccionada(c);
                   if (mapInst.current && c.latitud && c.longitud) {
-                    mapInst.current.panTo({ lat: parseFloat(c.latitud), lng: parseFloat(c.longitud) });
-                    mapInst.current.setZoom(15);
+                    mapInst.current.setView([parseFloat(c.latitud), parseFloat(c.longitud)], 15);
                   }
                 }}
                 style={{ padding: '16px 20px', borderBottom: `1px solid ${C.borde}`, cursor: 'pointer', background: esSelec ? '#EBF8FD' : C.blanco, borderLeft: esSelec ? `4px solid ${C.secundario}` : '4px solid transparent', transition: 'all 0.15s' }}
@@ -285,7 +246,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
         </div>
 
         {/* Mapa */}
-        <div style={{ flex: 1, position: 'relative' }}>
+        <div style={{ flex: 1, position: 'relative', zIndex: 0 }}>
           {errorMapa ? (
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', flexDirection: 'column', gap: '12px', color: C.textoClaro }}>
               <div style={{ fontSize: '44px' }}>🗺️</div>
@@ -298,7 +259,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
 
           {/* Card de detalle flotante */}
           {seleccionada && (
-            <div style={{ position: 'absolute', bottom: '24px', right: '24px', background: C.blanco, borderRadius: '16px', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', width: '320px', overflow: 'hidden', animation: 'fadeIn 0.2s ease' }}>
+            <div style={{ position: 'absolute', bottom: '24px', right: '24px', zIndex: 1000, background: C.blanco, borderRadius: '16px', boxShadow: '0 8px 32px rgba(0,0,0,0.18)', width: '320px', overflow: 'hidden', animation: 'fadeIn 0.2s ease' }}>
               <div style={{ background: C.grad, padding: '16px 20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <div style={{ width: '48px', height: '48px', borderRadius: '10px', overflow: 'hidden', background: 'rgba(255,255,255,0.2)', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {seleccionada.logo_clinica_url
