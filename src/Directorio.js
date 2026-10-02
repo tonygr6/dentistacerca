@@ -316,7 +316,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
       </div>
 
       {/* ── Footer ── */}
-      <footer style={{ background: '#f3f1eb', color: '#4a4a4c', borderTop: `1px solid ${C.borde}`, textAlign: 'center', padding: '14px', fontSize: '12px', position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50 }}>
+      <footer style={{ background: '#e3f1fb', color: '#4a4a4c', borderTop: `1px solid ${C.borde}`, textAlign: 'center', padding: '14px', fontSize: '12px', position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50 }}>
         dentistacerca.mx · Directorio dental gratuito · Powered by{' '}
         <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.primario, textDecoration: 'none', fontWeight: '600' }}>ORALIX</a>
       </footer>

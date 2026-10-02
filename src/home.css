@@ -8,6 +8,8 @@
 :root{
   --blanco:#ffffff;
   --crema:#f3f1eb;
+  --cielo:#e3f1fb;      /* azul cielo (tono de ORALIX muy claro) */
+  --degradado-cielo:linear-gradient(180deg,#e3f1fb 0%,#f4f9fd 55%,#ffffff 100%);
   --tinta:#28262a;
   --grafito:#4a4a4c;
   --plata:#cbcbcb;
@@ -38,7 +40,7 @@ html{scroll-behavior:smooth;}
 .nav-links{display:flex;align-items:center;gap:8px;}
 @media(max-width:640px){.nav-links .nl-hide{display:none;}.nav{padding:0 16px;}}
 .nl{font-size:15px;font-weight:400;color:var(--tinta);padding:8px 12px;border-radius:100px;cursor:pointer;border:none;background:none;}
-.nl:hover{background:var(--crema);}
+.nl:hover{background:var(--cielo);}
 .nl-cta{background:var(--accion);font-weight:500;padding:10px 20px;margin-left:8px;}
 .nl-cta:hover{background:var(--accion-hover);}
 
@@ -47,7 +49,7 @@ html{scroll-behavior:smooth;}
 .hero::after{content:'';position:absolute;right:-180px;bottom:-220px;width:560px;height:560px;border-radius:50%;
   background:radial-gradient(circle,rgba(26,111,191,.14),rgba(26,111,191,0) 65%);pointer-events:none;}
 .hero-inner{position:relative;z-index:1;max-width:820px;margin:0 auto;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--crema);color:var(--tinta);font-size:12px;font-weight:500;
+.hero-eyebrow{display:inline-flex;align-items:center;gap:6px;background:var(--cielo);color:var(--tinta);font-size:12px;font-weight:500;
   letter-spacing:0.02em;padding:8px 16px;border-radius:100px;margin-bottom:28px;}
 .hero h1{font-family:var(--serif);font-weight:400;color:var(--tinta);font-size:clamp(40px,7vw,72px);line-height:1.02;
   letter-spacing:-0.035em;text-wrap:balance;margin-bottom:20px;}
@@ -76,7 +78,7 @@ html{scroll-behavior:smooth;}
 
 /* ── SECCIONES ── */
 .section{padding:88px 24px;background:var(--blanco);}
-.sec-bg{background:var(--crema);}
+.sec-bg{background:var(--degradado-cielo);}
 .section-inner{max-width:1080px;margin:0 auto;}
 .two-col-hd{display:flex;flex-direction:column;align-items:center;text-align:center;margin-bottom:40px;gap:4px;}
 .section-title{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.5vw,48px);line-height:1.1;letter-spacing:-0.03em;color:var(--tinta);}
@@ -88,7 +90,7 @@ html{scroll-behavior:smooth;}
 /* ── BENEFICIOS + DISPONIBILIDAD (banda crema, tarjetas blancas sin sombra) ── */
 .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 @media(max-width:760px){.feat-grid{grid-template-columns:1fr;}}
-.feat-card{border-radius:16px;background:var(--blanco);}
+.feat-card{border-radius:16px;background:var(--blanco);border:1px solid var(--niebla);}
 .feat-pad{padding:40px;}
 @media(max-width:520px){.feat-pad{padding:28px;}}
 .feat-logo{width:56px;height:56px;object-fit:contain;margin-bottom:20px;}
@@ -96,7 +98,7 @@ html{scroll-behavior:smooth;}
 .feat-ht .green,.feat-ht em{font-style:normal;color:var(--az);}
 .dentista-title em{font-style:normal;color:var(--az);}
 .feat-hst{font-size:16px;color:var(--grafito);line-height:1.55;margin-bottom:24px;}
-.feat-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:0.02em;padding:8px 16px;border-radius:100px;background:var(--crema);color:var(--tinta);}
+.feat-tag{display:inline-block;font-size:12px;font-weight:500;letter-spacing:0.02em;padding:8px 16px;border-radius:100px;background:var(--cielo);color:var(--tinta);}
 .avail-demo{background:var(--blanco);border-radius:16px;padding:20px;border:1px solid var(--niebla);}
 .avail-doc{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
 .avail-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;background:var(--crema);border:1px solid var(--niebla);
@@ -132,9 +134,9 @@ html{scroll-behavior:smooth;}
 
 /* ── CLÍNICAS (banda crema, tarjetas blancas) ── */
 .clinics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
-.mini-card{background:var(--blanco);border-radius:16px;border:none;padding:28px;cursor:pointer;text-align:left;transition:outline-color .15s;outline:1px solid transparent;}
+.mini-card{background:var(--blanco);border-radius:16px;border:1px solid var(--niebla);padding:28px;cursor:pointer;text-align:left;transition:outline-color .15s;outline:1px solid transparent;}
 .mini-card:hover{outline-color:var(--tinta);}
-.mc-av{width:48px;height:48px;border-radius:12px;overflow:hidden;background:var(--crema);margin-bottom:16px;
+.mc-av{width:48px;height:48px;border-radius:12px;overflow:hidden;background:var(--cielo);margin-bottom:16px;
   display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--tinta);}
 .mc-av img{width:100%;height:100%;object-fit:contain;padding:4px;}
 .mc-ver{display:inline-block;font-size:11px;font-weight:500;letter-spacing:0.02em;color:#0b6e63;background:#eaf6f4;padding:3px 10px;border-radius:100px;margin-bottom:10px;}
@@ -151,7 +153,7 @@ html{scroll-behavior:smooth;}
 .dentista-sub{font-size:17px;color:var(--grafito);margin:10px auto 48px;text-align:center;max-width:620px;}
 .dentista-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 @media(max-width:760px){.dentista-grid{grid-template-columns:1fr;}}
-.dcard{background:var(--crema);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;padding:16px 16px 0;}
+.dcard{background:var(--degradado-cielo);border:1px solid var(--niebla);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;padding:16px 16px 0;}
 .dc-illus{border-radius:24px;overflow:hidden;display:flex;justify-content:center;align-items:flex-end;background:var(--blanco);}
 .dc-illus img{height:200px;width:100%;object-fit:contain;}
 .dc-illus img.foto{object-fit:cover;object-position:center 18%;height:400px;}
@@ -171,7 +173,7 @@ html{scroll-behavior:smooth;}
 .oralix-chip span{font-size:12px;font-weight:600;color:var(--tinta);}
 
 /* ── PIE ── */
-.footer{background:var(--crema);padding:64px 24px 32px;color:var(--grafito);}
+.footer{background:linear-gradient(0deg,#e3f1fb 0%,#ffffff 100%);border-top:1px solid var(--niebla);padding:64px 24px 32px;color:var(--grafito);}
 .footer-inner{max-width:1080px;margin:0 auto;}
 .footer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:48px;}
 @media(max-width:640px){.footer-grid{grid-template-columns:1fr 1fr;gap:28px;}}
