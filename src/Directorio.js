@@ -133,15 +133,14 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
     <div style={{ minHeight: '100vh', background: C.fondo, fontFamily: "'Inter', Arial, sans-serif" }}>
 
       {/* ── Header ── */}
-      <header style={{ background: C.grad, height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', boxShadow: '0 2px 16px rgba(0,0,0,0.18)', position: 'sticky', top: 0, zIndex: 100 }}>
+      <header style={{ background: C.blanco, borderBottom: `1px solid ${C.borde}`, height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', position: 'sticky', top: 0, zIndex: 100 }}>
         <div onClick={irAInicio} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
           <img src="/img/logo-dentistacerca.png" alt="" style={{ width: '36px', height: '36px', borderRadius: '9px', background: 'white', objectFit: 'contain' }} />
           <div>
-            <span style={{ color: 'white', fontWeight: '800', fontSize: '20px', letterSpacing: '-0.5px' }}>
-              dentista<span style={{ color: '#7DE8DF' }}>cerca</span>
-              <span style={{ fontWeight: '500', fontSize: '15px', opacity: 0.85 }}>.mx</span>
+            <span style={{ color: '#28262a', fontWeight: '600', fontSize: '18px', letterSpacing: '-0.02em', fontFamily: "'Instrument Sans', Inter, sans-serif" }}>
+              Dentista<span style={{ color: C.primario }}>Cerca</span>.mx
             </span>
-            <p style={{ color: 'rgba(255,255,255,0.75)', margin: 0, fontSize: '11px', lineHeight: 1 }}>
+            <p style={{ color: C.textoClaro, margin: '2px 0 0', fontSize: '11px', lineHeight: 1 }}>
               Directorio dental gratuito · México
             </p>
           </div>
@@ -152,7 +151,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
           href="https://app.oralix.mx"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ color: 'white', fontSize: '13px', fontWeight: '600', textDecoration: 'none', padding: '8px 16px', border: '1.5px solid rgba(255,255,255,0.45)', borderRadius: '8px', background: 'rgba(255,255,255,0.1)', transition: 'background 0.2s' }}
+          style={{ color: '#28262a', fontSize: '14px', fontWeight: '500', textDecoration: 'none', padding: '9px 18px', borderRadius: '100px', background: '#9fe0d6' }}
         >
           ¿Eres dentista? →
         </a>
@@ -317,9 +316,9 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
       </div>
 
       {/* ── Footer ── */}
-      <footer style={{ background: C.primario, color: 'rgba(255,255,255,0.6)', textAlign: 'center', padding: '14px', fontSize: '12px', position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50 }}>
+      <footer style={{ background: '#f3f1eb', color: '#4a4a4c', borderTop: `1px solid ${C.borde}`, textAlign: 'center', padding: '14px', fontSize: '12px', position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50 }}>
         dentistacerca.mx · Directorio dental gratuito · Powered by{' '}
-        <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: '#7DE8DF', textDecoration: 'none', fontWeight: '600' }}>ORALIX</a>
+        <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.primario, textDecoration: 'none', fontWeight: '600' }}>ORALIX</a>
       </footer>
 
       <style>{`

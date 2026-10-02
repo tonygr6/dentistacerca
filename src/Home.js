@@ -29,11 +29,11 @@ const SERVICIOS = [
 ];
 
 const CHIPS_HERO = [
-  ['🦷 Ortodoncia', { espec: 'Ortodoncia' }],
-  ['🔩 Implantes dentales', { espec: 'Implantes' }],
-  ['✨ Estética dental', { espec: 'Estética dental' }],
-  ['👶 Dentista para niños', { espec: 'Odontopediatría' }],
-  ['🔬 Endodoncia', { espec: 'Endodoncia' }],
+  ['Ortodoncia', { espec: 'Ortodoncia' }],
+  ['Implantes dentales', { espec: 'Implantes' }],
+  ['Estética dental', { espec: 'Estética dental' }],
+  ['Dentista para niños', { espec: 'Odontopediatría' }],
+  ['Endodoncia', { espec: 'Endodoncia' }],
 ];
 
 const DIAS_CORTOS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
@@ -133,8 +133,8 @@ export default function Home({ irADirectorio }) {
       {/* HERO */}
       <section className="hero">
         <div className="hero-inner">
-          <div className="hero-eyebrow">🦷 Solo clínicas dentales verificadas ORALIX</div>
-          <h1>Encuentra la atención dental<br /><em>que necesitas</em></h1>
+          <div className="hero-eyebrow">✓ Solo clínicas dentales verificadas por ORALIX</div>
+          <h1>Encuentra la atención dental que <em>necesitas</em></h1>
           <p className="hero-sub">Busca por especialidad, colonia o nombre de clínica, y encuentra un dentista cerca de ti.</p>
           <form className="search-box" onSubmit={buscar}>
             <input
@@ -144,7 +144,7 @@ export default function Home({ irADirectorio }) {
               placeholder="Ej.: ortodoncia, Guadalajara, nombre de la clínica…"
             />
             <div className="search-city">📍 Guadalajara</div>
-            <button className="btn-search" type="submit" aria-label="Buscar">↑</button>
+            <button className="btn-search" type="submit">Buscar</button>
           </form>
           <div className="hero-chips">
             {CHIPS_HERO.map(([texto, filtro]) => (
@@ -171,13 +171,13 @@ export default function Home({ irADirectorio }) {
                 <img className="feat-logo" src="/img/logo-diente.png" alt="" />
                 <div className="feat-ht"><span className="green">¡Es gratis</span> para pacientes!</div>
                 <div className="feat-hst">Buscar clínicas, ver disponibilidad y pedir tu cita dental no tiene ningún costo para ti. Sin comisiones ocultas.</div>
-                <span className="feat-tag">✓ Siempre gratuito para pacientes</span>
+                <span className="feat-tag">Siempre gratuito para pacientes</span>
               </div>
             </div>
 
             <div className="feat-card feat-card-b">
               <div className="feat-pad">
-                <div className="feat-ht">Consulta disponibilidad en tiempo real</div>
+                <div className="feat-ht">Consulta disponibilidad en <em>tiempo real</em></div>
                 <div className="feat-hst">Revisa qué días tiene espacio la clínica y pide tu cita por WhatsApp en segundos.</div>
                 {destacada ? (
                   <div className="avail-demo">
@@ -226,7 +226,7 @@ export default function Home({ irADirectorio }) {
         <div className="section-inner">
           <div className="two-col-hd">
             <div>
-              <div className="section-title">Especialidades más buscadas</div>
+              <div className="section-title">Especialidades más <em>buscadas</em></div>
               <div className="section-sub">Encuentra el especialista dental que necesitas</div>
             </div>
             <button className="show-all-lnk" onClick={() => irADirectorio({})}>Ver todas →</button>
@@ -242,7 +242,7 @@ export default function Home({ irADirectorio }) {
 
           <div style={{ marginTop: 44 }}>
             <div className="two-col-hd">
-              <div className="section-title" style={{ fontSize: 20 }}>Servicios más buscados</div>
+              <div className="section-title" style={{ fontSize: 28 }}>Servicios más buscados</div>
             </div>
             <div className="chips-grid">
               {SERVICIOS.map(s => (
@@ -259,7 +259,7 @@ export default function Home({ irADirectorio }) {
           <div className="section-inner">
             <div className="two-col-hd">
               <div>
-                <div className="section-title">Clínicas verificadas</div>
+                <div className="section-title">Clínicas <em>verificadas</em></div>
                 <div className="section-sub">Dentistas que trabajan con ORALIX</div>
               </div>
               <button className="show-all-lnk" onClick={() => irADirectorio({})}>Ver en el mapa →</button>
@@ -282,7 +282,7 @@ export default function Home({ irADirectorio }) {
       {/* PARA DENTISTAS */}
       <section className="dentista-section" id="para-dentistas">
         <div className="dentista-inner">
-          <div className="dentista-title">¿Eres dentista o tienes una clínica?</div>
+          <div className="dentista-title">¿Eres dentista o tienes una <em>clínica</em>?</div>
           <div className="dentista-sub">Conecta con más pacientes y administra tu clínica con tecnología hecha para dentistas</div>
           <div className="dentista-grid">
 
