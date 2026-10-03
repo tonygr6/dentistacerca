@@ -120,7 +120,7 @@ export default function Home({ irADirectorio }) {
       {/* NAV */}
       <nav className="nav">
         <a className="brand" href="#/" onClick={() => window.scrollTo(0, 0)}>
-          <div className="brand-icon"><img src="/img/logo-dentistacerca.png" alt="" /></div>
+          <div className="brand-icon"><img src="/img/logo-pin-256.png" alt="" /></div>
           <span>Dentista<span className="tl">Cerca</span>.mx</span>
         </a>
         <div className="nav-links">

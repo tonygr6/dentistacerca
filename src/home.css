@@ -34,7 +34,7 @@ html{scroll-behavior:smooth;}
 .nav{background:var(--blanco);height:68px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;
   position:sticky;top:0;z-index:100;border-bottom:1px solid transparent;}
 .brand{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;color:var(--tinta);letter-spacing:-0.02em;}
-.brand-icon{width:32px;height:32px;border-radius:8px;overflow:hidden;flex-shrink:0;}
+.brand-icon{width:30px;height:40px;flex-shrink:0;}
 .brand-icon img{width:100%;height:100%;object-fit:contain;}
 .tl{color:var(--az);}
 .nav-links{display:flex;align-items:center;gap:8px;}

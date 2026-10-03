@@ -135,7 +135,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
       {/* ── Header ── */}
       <header style={{ background: C.blanco, borderBottom: `1px solid ${C.borde}`, height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 24px', position: 'sticky', top: 0, zIndex: 100 }}>
         <div onClick={irAInicio} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
-          <img src="/img/logo-dentistacerca.png" alt="" style={{ width: '36px', height: '36px', borderRadius: '9px', background: 'white', objectFit: 'contain' }} />
+          <img src="/img/logo-pin-256.png" alt="" style={{ width: '30px', height: '40px', objectFit: 'contain' }} />
           <div>
             <span style={{ color: '#28262a', fontWeight: '600', fontSize: '18px', letterSpacing: '-0.02em', fontFamily: "'Instrument Sans', Inter, sans-serif" }}>
               Dentista<span style={{ color: C.primario }}>Cerca</span>.mx
