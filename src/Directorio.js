@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import supabase from './lib/supabase';
+import { URL_PARA_DENTISTAS } from './lib/enlaces';
 
 const ESPECIALIDADES = [
   'Ortodoncia', 'Endodoncia', 'Cirugía oral', 'Periodoncia',
@@ -148,12 +149,10 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
 
         {/* Botón ¿Eres dentista? */}
         <a
-          href="https://app.oralix.mx"
-          target="_blank"
-          rel="noopener noreferrer"
+          href={URL_PARA_DENTISTAS}
           style={{ color: '#28262a', fontSize: '14px', fontWeight: '500', textDecoration: 'none', padding: '9px 18px', borderRadius: '100px', background: '#9fe0d6' }}
         >
-          ¿Eres dentista? →
+          ¿Eres dentista? Crea tu perfil →
         </a>
       </header>
 

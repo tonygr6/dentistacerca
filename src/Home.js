@@ -4,6 +4,7 @@
 //   - disponibilidad: disponibilidad_publica()  (cerrado / lleno / con espacio, desde la agenda real)
 // Las cifras y testimonios del diseño original quedan apagados (MOSTRAR_CIFRAS)
 // hasta tener datos reales que los respalden.
+import { URL_REGISTRO, URL_ORALIX, URL_PARA_DENTISTAS } from './lib/enlaces';
 import React, { useEffect, useState } from 'react';
 import supabase from './lib/supabase';
 import './home.css';
@@ -117,6 +118,9 @@ export default function Home({ irADirectorio }) {
   return (
     <div className="dc-home">
 
+      {/* Franja para dentistas (solo celular; en escritorio está el botón en la barra) */}
+      <a className="top-dentista" href={URL_PARA_DENTISTAS}>¿Eres dentista? <strong>Crea tu perfil gratis →</strong></a>
+
       {/* NAV */}
       <nav className="nav">
         <a className="brand" href="#/" onClick={() => window.scrollTo(0, 0)}>
@@ -126,6 +130,7 @@ export default function Home({ irADirectorio }) {
         <div className="nav-links">
           <button className="nl nl-hide" onClick={() => irASeccion('especialidades')}>¿Cómo funciona?</button>
           <button className="nl nl-hide" onClick={() => irASeccion('para-dentistas')}>Para dentistas</button>
+          <a className="nl nl-hide nl-dentista" href={URL_PARA_DENTISTAS}>Soy dentista</a>
           <button className="nl nl-cta" onClick={() => irADirectorio({})}>Agendar cita</button>
         </div>
       </nav>
@@ -284,6 +289,17 @@ export default function Home({ irADirectorio }) {
         <div className="dentista-inner">
           <div className="dentista-title">¿Eres dentista o tienes una <em>clínica</em>?</div>
           <div className="dentista-sub">Conecta con más pacientes y administra tu clínica con tecnología hecha para dentistas</div>
+          <div className="crear-perfil">
+            <div>
+              <div className="cp-title">Crea gratis el perfil de tu <em>clínica</em></div>
+              <div className="cp-sub">Aparece en el directorio y el mapa, muestra a tus doctores, servicios y horario, y recibe citas por WhatsApp.</div>
+            </div>
+            <div className="cp-acciones">
+              <a className="cp-btn" href={URL_REGISTRO} target="_blank" rel="noopener noreferrer">Crear mi perfil gratis →</a>
+              <a className="cp-link" href={URL_PARA_DENTISTAS}>Ver todos los beneficios y cómo funciona →</a>
+              <a className="cp-link" href={URL_ORALIX} target="_blank" rel="noopener noreferrer">¿Ya usas ORALIX? Inicia sesión y actívalo en Configuración</a>
+            </div>
+          </div>
           <div className="dentista-grid">
 
             <div className="dcard">

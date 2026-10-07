@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import supabase from './lib/supabase';
+import { URL_PARA_DENTISTAS } from './lib/enlaces';
 
 const C = {
   azul: '#1A6FBF', teal: '#00B4A0', tinta: '#28262a', gris: '#6B7A8D', borde: '#E4EAF2',
@@ -85,7 +86,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
       </div>
       <div style={{ display: 'flex', gap: '8px' }}>
         {!movil && <button onClick={() => irADirectorio({})} style={{ border: `1px solid ${C.borde}`, background: C.blanco, color: C.tinta, borderRadius: '100px', padding: '8px 16px', fontSize: '14px', cursor: 'pointer', fontFamily: SANS }}>← Directorio</button>}
-        <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.tinta, fontSize: '14px', fontWeight: 500, textDecoration: 'none', padding: '9px 16px', borderRadius: '100px', background: C.pastilla, fontFamily: SANS }}>¿Eres dentista? →</a>
+        <a href={URL_PARA_DENTISTAS} style={{ color: C.tinta, fontSize: '14px', fontWeight: 500, textDecoration: 'none', padding: '9px 16px', borderRadius: '100px', background: C.pastilla, fontFamily: SANS, whiteSpace: 'nowrap' }}>{movil ? 'Soy dentista' : '¿Eres dentista? Crea tu perfil →'}</a>
       </div>
     </header>
   );
@@ -309,6 +310,15 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
         </div>
 
         {movil && <div style={{ marginTop: '16px' }}>{tarjetaCita}</div>}
+
+        {/* Invitación a dentistas */}
+        <section style={{ marginTop: '28px', background: C.blanco, border: `1px solid ${C.borde}`, borderRadius: '20px', padding: movil ? '20px' : '26px 30px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap' }}>
+          <div>
+            <p style={{ fontFamily: SERIF, fontSize: movil ? '24px' : '28px', margin: 0 }}>¿Eres dentista? Crea el perfil de tu <span style={{ color: C.azul }}>clínica</span></p>
+            <p style={{ margin: '4px 0 0', fontSize: '14px', color: C.gris }}>Es gratis: aparece en el directorio y recibe citas por WhatsApp.</p>
+          </div>
+          <a href={URL_PARA_DENTISTAS} style={{ ...btn(C.azul, '#fff'), padding: '13px 24px' }}>Conocer los beneficios →</a>
+        </section>
       </main>
 
       {/* Barra fija en celular */}

@@ -5,13 +5,14 @@ import React, { useEffect, useState } from 'react';
 import Home from './Home';
 import Directorio from './Directorio';
 import PerfilClinica from './PerfilClinica';
+import ParaDentistas from './ParaDentistas';
 
 function leerRuta() {
   const hash = window.location.hash.replace(/^#/, '') || '/';
   const [ruta, consulta = ''] = hash.split('?');
   const params = new URLSearchParams(consulta);
   return {
-    vista: ruta.startsWith('/directorio') ? 'directorio' : ruta.startsWith('/clinica/') ? 'perfil' : 'inicio',
+    vista: ruta.startsWith('/directorio') ? 'directorio' : ruta.startsWith('/clinica/') ? 'perfil' : ruta.startsWith('/para-dentistas') ? 'dentistas' : 'inicio',
     clinicaId: ruta.startsWith('/clinica/') ? decodeURIComponent(ruta.slice('/clinica/'.length)) : '',
     filtro: {
       q: params.get('q') || '',
@@ -40,6 +41,9 @@ export default function App() {
     window.location.hash = '/';
   }
 
+  if (ruta.vista === 'dentistas') {
+    return <ParaDentistas irAInicio={irAInicio} irADirectorio={irADirectorio} />;
+  }
   if (ruta.vista === 'perfil' && ruta.clinicaId) {
     return <PerfilClinica key={ruta.clinicaId} clinicaId={ruta.clinicaId} irAInicio={irAInicio} irADirectorio={irADirectorio} />;
   }
