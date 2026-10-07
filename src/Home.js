@@ -266,7 +266,7 @@ export default function Home({ irADirectorio }) {
             </div>
             <div className="clinics-row">
               {clinicas.slice(0, 8).map(c => (
-                <button key={c.id} className="mini-card" onClick={() => irADirectorio({ clinica: c.id })}>
+                <button key={c.id} className="mini-card" onClick={() => { window.location.hash = `/clinica/${c.id}`; }}>
                   <Avatar clinica={c} clase="mc-av" />
                   <div className="mc-ver">✓ ORALIX</div>
                   <div className="mc-name">{c.nombre}</div>

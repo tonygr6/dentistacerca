@@ -229,6 +229,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
                     {c.ciudad     && <p style={{ margin: '0 0 2px', fontSize: '12px', color: C.textoClaro }}>🏙️ {c.ciudad}</p>}
                     {c.direccion  && <p style={{ margin: '0 0 4px', fontSize: '12px', color: C.textoClaro, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>📍 {c.direccion}</p>}
                     {c.telefono   && <p style={{ margin: '0 0 6px', fontSize: '12px', color: C.textoClaro }}>📞 {c.telefono}</p>}
+                    <a href={`#/clinica/${c.id}`} onClick={e => e.stopPropagation()} style={{ display: 'inline-block', margin: '0 0 6px', fontSize: '12px', fontWeight: '700', color: C.primario, textDecoration: 'none' }}>Ver perfil →</a>
                     {espec.length > 0 && (
                       <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
                         {espec.slice(0, 3).map(e => (
@@ -291,6 +292,10 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
                     ))}
                   </div>
                 )}
+                <a href={`#/clinica/${seleccionada.id}`}
+                  style={{ display: 'block', marginTop: '14px', padding: '10px', background: '#28262a', color: 'white', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', fontWeight: '700', fontSize: '14px' }}>
+                  Ver perfil completo →
+                </a>
                 {telefonoWhatsApp(seleccionada.telefono) && (
                   <a href={`https://wa.me/${telefonoWhatsApp(seleccionada.telefono)}?text=${encodeURIComponent('Hola, vi su clínica en DentistaCerca.mx y quisiera una cita.')}`}
                     target="_blank" rel="noopener noreferrer"
