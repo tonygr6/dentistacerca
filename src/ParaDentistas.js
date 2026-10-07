@@ -134,11 +134,13 @@ export default function ParaDentistas({ irAInicio, irADirectorio }) {
                 {i === 0 && <span style={{ fontSize: '12px', fontWeight: 600, background: C.pastilla, padding: '3px 10px', borderRadius: '100px' }}>Incluye tu perfil gratis</span>}
                 <p style={{ margin: i === 0 ? '10px 0 2px' : '0 0 2px', fontWeight: 600, fontSize: '18px' }}>{nombre}</p>
                 <p style={{ margin: '0 0 10px', fontFamily: SERIF, fontSize: '40px', lineHeight: 1 }}>{precio}<span style={{ fontFamily: SANS, fontSize: '14px', color: C.gris }}> MXN/mes</span></p>
+                {i > 0 && <p style={{ margin: '0 0 10px' }}><span style={{ fontSize: '12.5px', fontWeight: 600, background: '#E6FAF6', color: '#0f766e', padding: '4px 10px', borderRadius: '100px' }}>🦷 Precio Dentista Fundador por 12 meses</span></p>}
                 <p style={{ margin: 0, color: C.gris, fontSize: '14px', lineHeight: 1.55 }}>{texto}</p>
               </div>
             ))}
           </div>
           <p style={{ textAlign: 'center', fontSize: '13px', color: C.gris, margin: '16px 0 0' }}>
+            Dentista Fundador: las primeras 50 clínicas que se suscriban (o hasta el 31 de enero de 2027) conservan su precio por 12 meses.<br />
             Precios con IVA incluido. Detalle completo en <a href="https://www.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.azul }}>oralix.mx</a>.
           </p>
         </div>
