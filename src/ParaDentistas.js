@@ -25,8 +25,8 @@ const PASOS = [
 
 const PLANES = [
   ['Básico', '$0', 'Perfil en DentistaCerca, agenda, expediente, odontograma, punto de venta y recordatorios por WhatsApp. 1 doctor, hasta 100 pacientes.'],
-  ['Pro', '$399', 'Todo lo de Básico + Smart Admin (costeo, almacén, rentabilidad), Lucy por voz y análisis de radiografías con IA. Hasta 3 doctores.'],
-  ['Premium', '$799', 'Todo lo de Pro + Lucy contestando tu WhatsApp 24 h y Entrena a Lucy. Hasta 10 doctores.'],
+  ['Pro', '$499', 'Todo lo de Básico + Smart Admin (costeo, almacén, rentabilidad), Lucy por voz y análisis de radiografías con IA. Hasta 3 doctores.'],
+  ['Premium', '$899', 'Todo lo de Pro + Lucy contestando tu WhatsApp 24 h y Entrena a Lucy. Hasta 10 doctores.'],
 ];
 
 const PREGUNTAS = [
