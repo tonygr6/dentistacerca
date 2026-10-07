@@ -4,7 +4,7 @@
 //   - disponibilidad: disponibilidad_publica()  (cerrado / lleno / con espacio, desde la agenda real)
 // Las cifras y testimonios del diseño original quedan apagados (MOSTRAR_CIFRAS)
 // hasta tener datos reales que los respalden.
-import { URL_REGISTRO, URL_ORALIX, URL_PARA_DENTISTAS } from './lib/enlaces';
+import { URL_REGISTRO, URL_PARA_DENTISTAS, URL_ACCESO_DENTISTAS } from './lib/enlaces';
 import React, { useEffect, useState } from 'react';
 import supabase from './lib/supabase';
 import './home.css';
@@ -297,7 +297,7 @@ export default function Home({ irADirectorio }) {
             <div className="cp-acciones">
               <a className="cp-btn" href={URL_REGISTRO} target="_blank" rel="noopener noreferrer">Crear mi perfil gratis →</a>
               <a className="cp-link" href={URL_PARA_DENTISTAS}>Ver todos los beneficios y cómo funciona →</a>
-              <a className="cp-link" href={URL_ORALIX} target="_blank" rel="noopener noreferrer">¿Ya usas ORALIX? Inicia sesión y actívalo en Configuración</a>
+              <a className="cp-link" href={URL_ACCESO_DENTISTAS} target="_blank" rel="noopener noreferrer">¿Ya usas ORALIX? Acceso dentistas: administra tu perfil →</a>
             </div>
           </div>
           <div className="dentista-grid">

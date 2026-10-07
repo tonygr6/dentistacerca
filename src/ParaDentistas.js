@@ -1,7 +1,7 @@
 // Página "Para dentistas": beneficios de tener perfil en DentistaCerca antes de mandar al registro.
 // Solo afirmaciones reales (planes aprobados 3-oct-2026); sin cifras ni testimonios inventados.
 import React, { useEffect, useState } from 'react';
-import { URL_REGISTRO, URL_ORALIX } from './lib/enlaces';
+import { URL_REGISTRO, URL_ORALIX, URL_ACCESO_DENTISTAS } from './lib/enlaces';
 
 const C = { azul: '#1A6FBF', teal: '#00B4A0', tinta: '#28262a', gris: '#6B7A8D', borde: '#E4EAF2', cielo: '#e3f1fb', pastilla: '#9fe0d6', blanco: '#FFFFFF' };
 const SERIF = "'Instrument Serif', Georgia, serif";
@@ -19,7 +19,7 @@ const BENEFICIOS = [
 
 const PASOS = [
   ['Crea tu cuenta gratis', 'Regístrate en ORALIX con el plan Básico. Toma un par de minutos.'],
-  ['Completa tu perfil', 'En Configuración → “Mi perfil en ORALIX 360”: ubicación, especialidades, descripción y formas de pago. Cada doctor llena su perfil y tú eliges qué servicios mostrar.'],
+  ['Completa tu perfil', 'En ORALIX, módulo DentistaCerca: ubicación, especialidades, descripción, horario y formas de pago. Cada doctor llena su perfil y tú eliges qué servicios mostrar.'],
   ['Actívalo y recibe pacientes', 'Marca tu clínica como visible y aparece en DentistaCerca. Lo puedes ocultar cuando quieras.'],
 ];
 
@@ -33,8 +33,8 @@ const PREGUNTAS = [
   ['¿Cuánto cuesta tener mi perfil?', 'Nada. El perfil en DentistaCerca está incluido en el plan Básico de ORALIX, que es gratuito.'],
   ['¿Cobran comisión por paciente?', 'No. Los pacientes te contactan directo por WhatsApp o teléfono; DentistaCerca no cobra por cita.'],
   ['¿Qué información se publica?', 'Solo la que tú eliges en ORALIX: datos de la clínica, doctores que decidan aparecer y los servicios que marques. Nunca datos de tus pacientes.'],
-  ['¿Puedo ocultar mi perfil?', 'Sí, con un clic en Configuración → “Mi perfil en ORALIX 360”.'],
-  ['Ya uso ORALIX, ¿qué hago?', 'Inicia sesión, entra a Configuración → “Mi perfil en ORALIX 360”, completa tus datos y marca tu clínica como visible.'],
+  ['¿Puedo ocultar mi perfil?', 'Sí, con un clic en el módulo DentistaCerca de ORALIX.'],
+  ['Ya uso ORALIX, ¿qué hago?', 'Usa “Acceso dentistas”: entras a ORALIX directo en el módulo DentistaCerca, donde ves el avance de tu perfil, lo completas y lo marcas como visible.'],
 ];
 
 function useMovil() {
@@ -63,7 +63,10 @@ export default function ParaDentistas({ irAInicio, irADirectorio }) {
           <img src="/img/logo-pin-256.png" alt="" style={{ width: '28px', height: '38px', objectFit: 'contain' }} />
           <span style={{ fontWeight: 600, fontSize: '18px', letterSpacing: '-0.02em' }}>Dentista<span style={{ color: C.azul }}>Cerca</span>.mx</span>
         </div>
-        <a href={URL_REGISTRO} target="_blank" rel="noopener noreferrer" style={{ ...btnPrim, padding: '9px 16px', fontSize: '14px' }}>{movil ? 'Registrarme' : 'Crear mi perfil gratis →'}</a>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <a href={URL_ACCESO_DENTISTAS} target="_blank" rel="noopener noreferrer" style={{ color: C.tinta, textDecoration: 'none', fontSize: '14px', fontWeight: 500, padding: '9px 12px' }}>{movil ? 'Acceso' : 'Acceso dentistas'}</a>
+          <a href={URL_REGISTRO} target="_blank" rel="noopener noreferrer" style={{ ...btnPrim, padding: '9px 16px', fontSize: '14px' }}>{movil ? 'Registrarme' : 'Crear mi perfil gratis →'}</a>
+        </div>
       </header>
 
       {/* Hero */}
@@ -171,7 +174,7 @@ export default function ParaDentistas({ irAInicio, irADirectorio }) {
           <p style={sub}>Crea tu cuenta, completa tu perfil y aparece en DentistaCerca.</p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href={URL_REGISTRO} target="_blank" rel="noopener noreferrer" style={btnPrim}>Crear mi perfil gratis →</a>
-            <a href={URL_ORALIX} target="_blank" rel="noopener noreferrer" style={btnSec}>Ya uso ORALIX: iniciar sesión</a>
+            <a href={URL_ACCESO_DENTISTAS} target="_blank" rel="noopener noreferrer" style={btnSec}>Acceso dentistas (ya uso ORALIX)</a>
           </div>
           <p style={{ margin: '20px 0 0' }}>
             <button onClick={() => irADirectorio({})} style={{ background: 'none', border: 'none', color: C.azul, fontSize: '14px', cursor: 'pointer', fontFamily: SANS }}>Ver el directorio de clínicas →</button>
