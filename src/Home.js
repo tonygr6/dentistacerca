@@ -1,4 +1,4 @@
-// Página de inicio de DentistaCerca.mx
+// Página de inicio de MiDentistaCerca.com
 // Diseño hecho en Claude (Chat); aquí con datos REALES de ORALIX:
 //   - clínicas: directorio_publico()  (solo clínicas que eligieron aparecer)
 //   - disponibilidad: disponibilidad_publica()  (cerrado / lleno / con espacio, desde la agenda real)
@@ -112,7 +112,7 @@ export default function Home({ irADirectorio }) {
   })() : '';
   const urlAgendar = waDestacada
     ? `https://wa.me/${waDestacada}?text=${encodeURIComponent(
-        `Hola, vi su clínica en DentistaCerca.mx y quisiera una cita${textoDia ? ` el ${textoDia}` : ''}.`)}`
+        `Hola, vi su clínica en MiDentistaCerca.com y quisiera una cita${textoDia ? ` el ${textoDia}` : ''}.`)}`
     : null;
 
   return (
@@ -125,7 +125,7 @@ export default function Home({ irADirectorio }) {
       <nav className="nav">
         <a className="brand" href="#/" onClick={() => window.scrollTo(0, 0)}>
           <div className="brand-icon"><img src="/img/logo-pin-256.png" alt="" /></div>
-          <span>Dentista<span className="tl">Cerca</span>.mx</span>
+          <span>MiDentista<span className="tl">Cerca</span>.com</span>
         </a>
         <div className="nav-links">
           <button className="nl nl-hide" onClick={() => irASeccion('especialidades')}>¿Cómo funciona?</button>
@@ -312,7 +312,7 @@ export default function Home({ irADirectorio }) {
                   <div className="dc-ft">Expediente clínico digital completo</div>
                   <div className="dc-ft">Agenda con recordatorios por WhatsApp</div>
                   <div className="dc-ft">Punto de venta, abonos y reportes</div>
-                  <div className="dc-ft">Perfil verificado en DentistaCerca.mx</div>
+                  <div className="dc-ft">Perfil verificado en MiDentistaCerca.com</div>
                 </div>
                 <a className="dc-btn" href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer">Conocer ORALIX →</a>
               </div>
@@ -359,12 +359,12 @@ export default function Home({ irADirectorio }) {
               <a className="fg-link" href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer">Lucy — IA de agenda</a>
             </div>
             <div>
-              <div className="footer-brand"><span>DentistaCerca.mx</span></div>
+              <div className="footer-brand"><span>MiDentistaCerca.com</span></div>
               <div className="footer-addr">Powered by ORALIX<br />Guadalajara, Jalisco, México</div>
             </div>
           </div>
           <div className="footer-bottom">
-            <div>DentistaCerca.mx © {new Date().getFullYear()} — Red dental verificada por ORALIX</div>
+            <div>MiDentistaCerca.com © {new Date().getFullYear()} — Red dental verificada por ORALIX</div>
             <div>Guadalajara y zona metropolitana</div>
           </div>
         </div>

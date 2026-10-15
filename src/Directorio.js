@@ -139,7 +139,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
           <img src="/img/logo-pin-256.png" alt="" style={{ width: '30px', height: '40px', objectFit: 'contain' }} />
           <div>
             <span style={{ color: '#28262a', fontWeight: '600', fontSize: '18px', letterSpacing: '-0.02em', fontFamily: "'Instrument Sans', Inter, sans-serif" }}>
-              Dentista<span style={{ color: C.primario }}>Cerca</span>.mx
+              MiDentista<span style={{ color: C.primario }}>Cerca</span>.com
             </span>
             <p style={{ color: C.textoClaro, margin: '2px 0 0', fontSize: '11px', lineHeight: 1 }}>
               Directorio dental gratuito · México
@@ -296,7 +296,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
                   Ver perfil completo →
                 </a>
                 {telefonoWhatsApp(seleccionada.telefono) && (
-                  <a href={`https://wa.me/${telefonoWhatsApp(seleccionada.telefono)}?text=${encodeURIComponent('Hola, vi su clínica en DentistaCerca.mx y quisiera una cita.')}`}
+                  <a href={`https://wa.me/${telefonoWhatsApp(seleccionada.telefono)}?text=${encodeURIComponent('Hola, vi su clínica en MiDentistaCerca.com y quisiera una cita.')}`}
                     target="_blank" rel="noopener noreferrer"
                     style={{ display: 'block', marginTop: '14px', padding: '10px', background: '#25D366', color: 'white', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', fontWeight: '700', fontSize: '14px' }}>
                     💬 Pedir cita por WhatsApp
@@ -321,7 +321,7 @@ export default function Directorio({ filtroInicial = {}, irAInicio }) {
 
       {/* ── Footer ── */}
       <footer style={{ background: '#e3f1fb', color: '#4a4a4c', borderTop: `1px solid ${C.borde}`, textAlign: 'center', padding: '14px', fontSize: '12px', position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50 }}>
-        dentistacerca.mx · Directorio dental gratuito · Powered by{' '}
+        midentistacerca.com · Directorio dental gratuito · Powered by{' '}
         <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.primario, textDecoration: 'none', fontWeight: '600' }}>ORALIX</a>
       </footer>
 

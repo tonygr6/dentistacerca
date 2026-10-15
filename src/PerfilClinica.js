@@ -1,4 +1,4 @@
-// Perfil público de una clínica (organización tipo Doctoralia / TopDoctors, estilo DentistaCerca).
+// Perfil público de una clínica (organización tipo Doctoralia / TopDoctors, estilo MiDentistaCerca).
 // Datos: perfil_clinica_publico(id) → solo información pública que la clínica eligió mostrar
 // en ORALIX; disponibilidad_publica(id) → días disponibles/llenos según su agenda (sin pacientes).
 import React, { useEffect, useRef, useState } from 'react';
@@ -54,7 +54,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
       setPerfil(p.data);
       setDispon(d.data || []);
       setEstado('ok');
-      document.title = `${p.data.clinica.nombre} — DentistaCerca.mx`;
+      document.title = `${p.data.clinica.nombre} — MiDentistaCerca.com`;
     });
     return () => { vivo = false; };
   }, [clinicaId]);
@@ -81,7 +81,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
       <div onClick={irAInicio} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
         <img src="/img/logo-pin-256.png" alt="" style={{ width: '28px', height: '38px', objectFit: 'contain' }} />
         <span style={{ color: C.tinta, fontWeight: 600, fontSize: '18px', letterSpacing: '-0.02em', fontFamily: SANS }}>
-          Dentista<span style={{ color: C.azul }}>Cerca</span>.mx
+          MiDentista<span style={{ color: C.azul }}>Cerca</span>.com
         </span>
       </div>
       <div style={{ display: 'flex', gap: '8px' }}>
@@ -102,7 +102,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
               <h1 style={{ fontFamily: SERIF, fontWeight: 400, fontSize: '32px', color: C.tinta, margin: '0 0 8px' }}>
                 {estado === 'noexiste' ? 'Perfil no disponible' : 'No se pudo cargar el perfil'}
               </h1>
-              <p style={{ margin: '0 0 20px' }}>{estado === 'noexiste' ? 'Esta clínica no está publicada en DentistaCerca o ya no existe.' : 'Inténtalo de nuevo en unos minutos.'}</p>
+              <p style={{ margin: '0 0 20px' }}>{estado === 'noexiste' ? 'Esta clínica no está publicada en MiDentistaCerca o ya no existe.' : 'Inténtalo de nuevo en unos minutos.'}</p>
               <button onClick={() => irADirectorio({})} style={{ border: 'none', background: C.azul, color: '#fff', borderRadius: '100px', padding: '11px 22px', fontSize: '15px', cursor: 'pointer', fontFamily: SANS }}>Ver directorio</button>
             </>
           )}
@@ -113,7 +113,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
 
   const { clinica: c, doctores, servicios } = perfil;
   const wa = telWa(c.whatsapp) || telWa(c.telefono);
-  const urlWa = wa ? `https://wa.me/${wa}?text=${encodeURIComponent(`Hola, vi el perfil de ${c.nombre} en DentistaCerca.mx y me gustaría agendar una cita.`)}` : null;
+  const urlWa = wa ? `https://wa.me/${wa}?text=${encodeURIComponent(`Hola, vi el perfil de ${c.nombre} en MiDentistaCerca.com y me gustaría agendar una cita.`)}` : null;
   const urlMapa = c.latitud && c.longitud
     ? `https://www.google.com/maps/dir/?api=1&destination=${c.latitud},${c.longitud}`
     : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${c.nombre} ${c.direccion || ''} ${c.ciudad || ''}`)}`;
@@ -301,7 +301,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
             <section id="opiniones" style={{ ...card, scrollMarginTop: '130px' }}>
               <h2 style={h2}>Opiniones de <span style={{ color: C.azul }}>pacientes</span></h2>
               <p style={{ margin: 0, color: C.gris, lineHeight: 1.6 }}>
-                Muy pronto: opiniones verificadas. En DentistaCerca solo se publicarán opiniones de pacientes que tuvieron una cita real en la clínica.
+                Muy pronto: opiniones verificadas. En MiDentistaCerca solo se publicarán opiniones de pacientes que tuvieron una cita real en la clínica.
               </p>
             </section>
           </div>
@@ -330,7 +330,7 @@ export default function PerfilClinica({ clinicaId, irAInicio, irADirectorio }) {
       )}
 
       <footer style={{ background: C.cielo, color: '#4a4a4c', textAlign: 'center', padding: '18px', fontSize: '12px', marginTop: '20px' }}>
-        dentistacerca.mx · Directorio dental gratuito · Powered by <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.azul, textDecoration: 'none', fontWeight: 600 }}>ORALIX</a>
+        midentistacerca.com · Directorio dental gratuito · Powered by <a href="https://app.oralix.mx" target="_blank" rel="noopener noreferrer" style={{ color: C.azul, textDecoration: 'none', fontWeight: 600 }}>ORALIX</a>
       </footer>
     </div>
   );

@@ -1,4 +1,4 @@
-// DentistaCerca.mx — navegación entre la página de inicio y el directorio con mapa.
+// MiDentistaCerca.com — navegación entre la página de inicio y el directorio con mapa.
 // Usa el "#" de la dirección (#/ y #/directorio?...) para no requerir configuración
 // extra de rutas en Vercel.
 import React, { useEffect, useState } from 'react';

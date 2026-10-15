@@ -1,4 +1,4 @@
-// Página "Para dentistas": beneficios de tener perfil en DentistaCerca antes de mandar al registro.
+// Página "Para dentistas": beneficios de tener perfil en MiDentistaCerca antes de mandar al registro.
 // Solo afirmaciones reales (planes aprobados 3-oct-2026); sin cifras ni testimonios inventados.
 import React, { useEffect, useState } from 'react';
 import { URL_REGISTRO, URL_ORALIX, URL_ACCESO_DENTISTAS } from './lib/enlaces';
@@ -9,7 +9,7 @@ const SANS  = "'Instrument Sans', Inter, Arial, sans-serif";
 const PERFIL_EJEMPLO = '#/clinica/ef186904-32ee-4c74-8b34-546649040d76';
 
 const BENEFICIOS = [
-  ['📍', 'Aparece donde te buscan', 'Tu clínica en el directorio y en el mapa de DentistaCerca, filtrable por especialidad y zona.'],
+  ['📍', 'Aparece donde te buscan', 'Tu clínica en el directorio y en el mapa de MiDentistaCerca, filtrable por especialidad y zona.'],
   ['🦷', 'Un perfil completo', 'Tus doctores con foto y cédula, servicios con precio “desde”, horario, ubicación y formas de pago.'],
   ['💬', 'Citas directo a tu WhatsApp', 'El paciente te escribe a tu número. Sin intermediarios y sin comisión por paciente.'],
   ['📅', 'Disponibilidad real', 'Los días con espacio se calculan con tu agenda de ORALIX: el paciente ve cuándo puedes atenderlo.'],
@@ -19,22 +19,22 @@ const BENEFICIOS = [
 
 const PASOS = [
   ['Crea tu cuenta gratis', 'Regístrate en ORALIX con el plan Básico. Toma un par de minutos.'],
-  ['Completa tu perfil', 'En ORALIX, módulo DentistaCerca: ubicación, especialidades, descripción, horario y formas de pago. Cada doctor llena su perfil y tú eliges qué servicios mostrar.'],
+  ['Completa tu perfil', 'En ORALIX, módulo MiDentistaCerca: ubicación, especialidades, descripción, horario y formas de pago. Cada doctor llena su perfil y tú eliges qué servicios mostrar.'],
   ['Actívalo y recibe pacientes', 'Marca tu clínica como visible y aparece en DentistaCerca. Lo puedes ocultar cuando quieras.'],
 ];
 
 const PLANES = [
-  ['Básico', '$0', 'Perfil en DentistaCerca, agenda, expediente, odontograma, punto de venta y recordatorios por WhatsApp. 1 doctor, hasta 100 pacientes.'],
+  ['Básico', '$0', 'Perfil en MiDentistaCerca, agenda, expediente, odontograma, punto de venta y recordatorios por WhatsApp. 1 doctor, hasta 100 pacientes.'],
   ['Pro', '$499', 'Todo lo de Básico + Smart Admin (costeo, almacén, rentabilidad), Lucy por voz y análisis de radiografías con IA. Hasta 3 doctores.'],
   ['Premium', '$899', 'Todo lo de Pro + Lucy contestando tu WhatsApp 24 h y Entrena a Lucy. Hasta 10 doctores.'],
 ];
 
 const PREGUNTAS = [
-  ['¿Cuánto cuesta tener mi perfil?', 'Nada. El perfil en DentistaCerca está incluido en el plan Básico de ORALIX, que es gratuito.'],
-  ['¿Cobran comisión por paciente?', 'No. Los pacientes te contactan directo por WhatsApp o teléfono; DentistaCerca no cobra por cita.'],
+  ['¿Cuánto cuesta tener mi perfil?', 'Nada. El perfil en MiDentistaCerca está incluido en el plan Básico de ORALIX, que es gratuito.'],
+  ['¿Cobran comisión por paciente?', 'No. Los pacientes te contactan directo por WhatsApp o teléfono; MiDentistaCerca no cobra por cita.'],
   ['¿Qué información se publica?', 'Solo la que tú eliges en ORALIX: datos de la clínica, doctores que decidan aparecer y los servicios que marques. Nunca datos de tus pacientes.'],
-  ['¿Puedo ocultar mi perfil?', 'Sí, con un clic en el módulo DentistaCerca de ORALIX.'],
-  ['Ya uso ORALIX, ¿qué hago?', 'Usa “Acceso dentistas”: entras a ORALIX directo en el módulo DentistaCerca, donde ves el avance de tu perfil, lo completas y lo marcas como visible.'],
+  ['¿Puedo ocultar mi perfil?', 'Sí, con un clic en el módulo MiDentistaCerca de ORALIX.'],
+  ['Ya uso ORALIX, ¿qué hago?', 'Usa “Acceso dentistas”: entras a ORALIX directo en el módulo MiDentistaCerca, donde ves el avance de tu perfil, lo completas y lo marcas como visible.'],
 ];
 
 function useMovil() {
@@ -46,7 +46,7 @@ function useMovil() {
 export default function ParaDentistas({ irAInicio, irADirectorio }) {
   const movil = useMovil();
   const [abierta, setAbierta] = useState(0);
-  useEffect(() => { document.title = 'Para dentistas — DentistaCerca.mx'; }, []);
+  useEffect(() => { document.title = 'Para dentistas — MiDentistaCerca.com'; }, []);
 
   const wrap = { maxWidth: '1080px', margin: '0 auto', padding: movil ? '0 16px' : '0 24px' };
   const h2 = { fontFamily: SERIF, fontWeight: 400, fontSize: movil ? '34px' : '46px', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 10px', textAlign: 'center' };
@@ -61,7 +61,7 @@ export default function ParaDentistas({ irAInicio, irADirectorio }) {
       <header style={{ background: C.blanco, borderBottom: `1px solid ${C.borde}`, height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px', position: 'sticky', top: 0, zIndex: 100 }}>
         <div onClick={irAInicio} style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}>
           <img src="/img/logo-pin-256.png" alt="" style={{ width: '28px', height: '38px', objectFit: 'contain' }} />
-          <span style={{ fontWeight: 600, fontSize: '18px', letterSpacing: '-0.02em' }}>Dentista<span style={{ color: C.azul }}>Cerca</span>.mx</span>
+          <span style={{ fontWeight: 600, fontSize: '18px', letterSpacing: '-0.02em' }}>MiDentista<span style={{ color: C.azul }}>Cerca</span>.com</span>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
           <a href={URL_ACCESO_DENTISTAS} target="_blank" rel="noopener noreferrer" style={{ color: C.tinta, textDecoration: 'none', fontSize: '14px', fontWeight: 500, padding: '9px 12px' }}>{movil ? 'Acceso' : 'Acceso dentistas'}</a>
@@ -77,7 +77,7 @@ export default function ParaDentistas({ irAInicio, irADirectorio }) {
             Que los pacientes de tu zona <span style={{ color: C.azul }}>te encuentren</span>
           </h1>
           <p style={{ ...sub, fontSize: movil ? '17px' : '19px' }}>
-            Crea gratis el perfil de tu clínica en DentistaCerca: tus doctores, servicios, horario y ubicación, con citas directo a tu WhatsApp.
+            Crea gratis el perfil de tu clínica en MiDentistaCerca: tus doctores, servicios, horario y ubicación, con citas directo a tu WhatsApp.
           </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href={URL_REGISTRO} target="_blank" rel="noopener noreferrer" style={btnPrim}>Crear mi perfil gratis →</a>
@@ -183,7 +183,7 @@ export default function ParaDentistas({ irAInicio, irADirectorio }) {
       </section>
 
       <footer style={{ background: C.cielo, color: '#4a4a4c', textAlign: 'center', padding: '18px', fontSize: '12px' }}>
-        dentistacerca.mx · Directorio dental gratuito · Powered by <a href={URL_ORALIX} target="_blank" rel="noopener noreferrer" style={{ color: C.azul, textDecoration: 'none', fontWeight: 600 }}>ORALIX</a>
+        midentistacerca.com · Directorio dental gratuito · Powered by <a href={URL_ORALIX} target="_blank" rel="noopener noreferrer" style={{ color: C.azul, textDecoration: 'none', fontWeight: 600 }}>ORALIX</a>
       </footer>
     </div>
   );
